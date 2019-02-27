@@ -1,27 +1,24 @@
-var pikeStreet = {
-    min: 23,
-    max: 65,
-    avg_cust: 6.3,
-    randomAvg: function() {
-        var _random = function(min, max){
-            return Math.floor(Math.random()*(max - min) + min);
-         };
-    }
-}
+'use strict';
+var _random = function(min, max){
+    return Math.random()*(max - min) + min;
+  };
 
-function render_pikeStreet(){
-var li_el = document.createElement('li');
-var article_el = document.createElement('article');
-var h2_el = document.createElement('h2');
-var p_el = doucment.createElement('p');
-
-li_el.textContent = pikeStreet;
-article_el.appendChild(li_el);
-li_el.appendChild(article_el);
-
-console.log(li_el);
+var Salmon_cookies = function (store_name, location, min_cust, max_cust, store_open, store_close, cookie_order_size, avg_cookies_per_cust){
+    this.store_name = store_name;
+    this.store_type = 'Salmon Cookies';
+    this.location = location;
+    this.min_cust = min_cust;
+    this.max_cust = max_cust;
+    this.open_hour = store_open;
+    this.close_hour =store_close;
+    this.cookie_order_size = cookie_order_size;
+    this.cookies_sold_each_hour = [];
+    this.avg_cookies_per_cust = avg_cookies_per_cust || 6.3;
+};
 
 
-}
+Salmon_cookies.prototype.cookies_per_hour = function () {
+    var random_customers = Math.floor(_random(this.min_cust, this.max_cust));
+    return Math.floor(this.avg_cookies_per_cust * random_customers);
+};
 
-render_pikeStreet();

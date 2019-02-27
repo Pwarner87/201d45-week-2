@@ -1,3 +1,10 @@
+'use strict'
+
+var _random = function(min, max){
+  return Math.random()*(max - min) + min;
+};
+
+
 // Creating Store Object
 var pikeStreet = {
     min: 23,
@@ -20,7 +27,7 @@ pikeStreet.calculate_cookies_sold_each_hour = function () {
       this.cookies_sold_each_hour.push(cookies_sold);
     }
 };    
-      pikeStreet.render = function(){
+pikeStreet.render = function(){
 var li_el = document.createElement('li');
 var article_el = document.createElement('article');
 var h2_el = document.createElement('h2');
@@ -204,11 +211,11 @@ Alki.calculate_cookies_sold_each_hour = function () {
       this.cookies_sold_each_hour.push(cookies_sold);
     }
 };    
-      Alki.render = function(){
+Alki.render = function(){
 var li_el = document.createElement('li');
 var article_el = document.createElement('article');
-var h2_el = document.createElement('h2');
-var p_el = doucment.createElement('p');
+// var h2_el = document.createElement('h2');
+// var p_el = doucment.createElement('p');
 
 for(var i = 0; i < this.cookies_sold_each_hour.length; i++){
     var hour_li_el = document.createElement('li');
@@ -216,8 +223,9 @@ for(var i = 0; i < this.cookies_sold_each_hour.length; i++){
     ul_el.appendChild(hour_li_el);
   }
 
-li_el.textContent = Alki;
-article_el.appendChild(li_el);
+li_el.textContent = this.Alki;
+
+// article_el.appendChild(li_el);
 li_el.appendChild(article_el);
 
 var target_element = document.getElementById('cookie list');
@@ -227,6 +235,27 @@ console.log(li_el);
 
 
 }
+
+var renderStore = function () {
+  var target = document.getElementById('store-container');
+  var li_el = document.createElement('li');
+  var h2_el = document.createElement('h2');
+  var ul_el = document.createElement('ul');
+
+  h2_el.textContent = this.store_name;
+
+  for (var i = 0; i < this.cookies_sold_each_hour.length; i++) {
+
+    var hour_li_el = document.createElement('li');
+    hour_li_el.textContent = this.cookies_sold_each_hour[i];
+    ul_el.appendChild(hour_li_el);
+  }
+
+
+  li_el.appendChild(h2_el);
+  li_el.appendChild(ul_el);
+  target.appendChild(li_el);
+};
 
 pikeStreet.render = renderStore;
 seaTac.render = renderStore;
